@@ -1,4 +1,4 @@
-# Neurolab – My Python Learning Journey
+# Neurolab - My Python Learning Journey
 
 ## About Me
 I am a Computer Science undergraduate at Najafabad University, passionate about AI and Machine Learning.  
@@ -20,4 +20,4 @@ These exercises are part of my learning process and reflect my gradual progress 
 - Document my learning journey in a           structured way. 
 
 ## Mentorship
-Guided by Prof. [Dr. Mahdi Farhani](https://github.com/Mahdi-Farhani) at Najafabad University.
+Guided by Prof. [Mahdi Farhani](https://github.com/Mahdi-Farhani) at Najafabad University.
