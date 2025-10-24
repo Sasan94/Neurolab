@@ -2,7 +2,7 @@ try:
   age = int(input("Type your age in years here: "))
   if age > 0:
     age_month = age*12
-    age_day = age_month*30
+    age_day = age*365
     age_hour = age_day*24
     age_minute = age_hour*60
     age_second = age_minute*60
