@@ -1,5 +1,6 @@
 # Take a number from the user and convert it to integer
 num = int(input("Enter a number: "))
+user_num = num
 
 # If it's negative, turn it into positive
 if num < 0:
@@ -21,4 +22,4 @@ while num > 0:
     num //= 10              
 
 # Print the largest digit after checking all digits
-print(f"The largest digit is: {largest}")
+print(f"The largest digit in {user_num} is  {largest}")
