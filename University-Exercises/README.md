@@ -1,7 +1,7 @@
 # University Exercises
 
 ## Description
-This folder contains exercises and practice problems from university courses, including programming, mathematics, and related subjects.
+This folder contains exercises and practice problems from university courses, including programming, mathematics, Algorithms, and related subjects.
 
 ## Purpose
 - Strengthen understanding of course material.
@@ -9,8 +9,10 @@ This folder contains exercises and practice problems from university courses, in
 - Develop problem-solving and analytical skills.
 
 ## Contents
-- Subfolders or files for each course.
-- Scripts, notes, or project files corresponding to specific exercises.
+- Basics
+- Math
+- Mini Projects
+- Algorithms
 
 ## How to Use
 - Open the folder for the course you want to study.
