@@ -18,7 +18,7 @@ This folder contains exercises and practice problems from university courses, in
 - Run scripts in Python 3 (or the relevant environment).
 
 ## Acknowledgements
-- ***Special thanks to Professor Gilbert Strang for his linear algebra lectures***
-- ***Special thanks to Dr. Anna Bell for teaching introductory Python***
-- ***Special thanks to Professor Mahdi Farhani***
+- ****Special thanks to Professor Gilbert Strang for his invaluable linear algebra lectures****
+- ****Special thanks to Dr. Anna Bell for teaching introductory Python****
+- ****Special thanks to Professor Mahdi Farhani****
 
