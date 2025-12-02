@@ -1,6 +1,6 @@
 '''
-This program receives a number from the user,
-extracts its digits,
+This program takes a number from the user,
+separates its digits,
 and displays them in order.
 '''
 
@@ -13,6 +13,10 @@ try:
     while num == 0:
         num = int(input("Enter numbers greater than 0: "))
 
+    #If the number is negative, convert it to positive
+    if num < 0:
+        num = num * (-1)
+        
     # Create a list to store the separated digits
     num_separate = []
     
