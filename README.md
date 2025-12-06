@@ -1,4 +1,4 @@
-# UniRipo - My Python Learning Journey
+# UniRepo - My Python Learning Journey
 
 ## About Me
 I am a Computer Science undergraduate at Najafabad University, passionate about AI and Machine Learning.  
