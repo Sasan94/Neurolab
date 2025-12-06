@@ -6,6 +6,7 @@ This folder includes small mini projects in python designed to practice programm
 - **Simple Banking System**
 
 ## Purpose
+- Using functions
 - Working With lists and loops.
 - Using conditional statments.
 - Handling user input and data validation.
