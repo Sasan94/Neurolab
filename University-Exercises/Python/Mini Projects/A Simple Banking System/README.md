@@ -4,13 +4,18 @@
 This project simluates a very basic banking system where users can create accounts, deposit and withdraw money, and view account balance.
 
 ## Key Features
-- Create multipul accounts with name, ID, and initial balance.
-- Deposite money into a specific account.
+- Menu-driven interface for easy interaction.
+- Create multipul accounts with firstname, surname, customerID, accountID and initial balance.
+- Deposite money into a specific account using customerID.
 - Withdraw money with balance check.
 - Display all acount balances.
-- Menu-driven interface for easy interaction.
+- Display a customer’s accounts using their customer ID.
+- Display the average balance of a customer’s accounts using their customerID.
+- list the customer’s accounts with balances above the average.
+
 
 ## Skills Practiced
+- Creating and using functions.
 - Working with lists and loops in Python.
 - Using conditional statments.
 - Implementing a menu-driven program.
