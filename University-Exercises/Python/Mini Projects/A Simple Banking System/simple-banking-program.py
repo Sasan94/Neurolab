@@ -1,68 +1,174 @@
-# Ask how many accounts the user wants to create
-accounts = int(input("How many accounts do you need: "))
-
-#To take basic account info and save them  in thecustomers array
+#Declear a global array named customers to store and use the customers's information throughout the code
 customers = []
-for i in range(accounts):
-  temp = []
-  acc_name = input("Type the account holder's name: ")
-  acc_id = int(input("Type the ID for the account: "))
-  balance = int(input("Type the balance $: "))
-  temp = [acc_id, acc_name, balance]
-  customers.append(temp)
-print(f"\n")
 
-#Starting the main program loop
-while True:
-  print(f"\n\n===== Banking Operations Menu =====")
-  print(f"\n1.Display all account holders' names and Balances")
-  print(f"2.Deposite into an account")
-  print(f"3.Withdra from an account")
-  print(f"4.Exit the program")
+#This function displays customers's information
+def Display():
+   for c in customers:
+      print(f"Info ==> CustomerID: {c[2]} - AccountID: {c[3]} - FullName: {c[0].title()} {c[1].title()} - Balance = ${c[4]:,}")
 
-  #The user chooses one the five menu options
-  choice = input("\nPlease choose one of the five options above: ")
-  print("\n")
+#This function adds new customer to the system
+def AddAccount():
+   first_name = input("Type the holder's account name: ")
+   last_name = input(f"Type the last name for {first_name.title()}: ")
+   try:
+      cust_id = int(input(f"Create A Customer ID for {first_name.title()} {last_name.title()}: "))
+   except ValueError:
+      print("Enter digits only")
+      return
+   try:
+      acc_id = int(input(f"Create An Account ID for the {first_name.title()} {last_name.title()}: "))
+   except ValueError:
+      print("Enter digits only")
+      return
+   try:
+      balance = int(input(f"Enter the initial balance for {first_name.title()} {last_name.title()} $: "))
+   except ValueError:
+      print("Enter digits only")
+      return
+   info = [first_name, last_name, cust_id, acc_id, balance]
+   customers.append(info)
 
-  #Option 1: to show all accounts
-  if choice == '1':
-    for acc_id, acc_name, balance in customers:
-      print(f"Account ID: {acc_id}, Name: {acc_name.title()}, Balance: ${balance:,}")
-      print("\n")
+#This function helps to deposit into another account
+def Deposit():
+   try:
+      user_acc = int(input("Enter the AccountID into which you want to deposit: "))
+      amount = int(input("Enter the amount $: "))
+   except ValueError:
+      print("Enter digits only")
+      return
+   found = False
+   for c in customers:
+      if user_acc == c[3]:
+         found = True
+         c[4] += amount
+         print(f"\nAn amount Of ${amount:,} was deposited into the account with ID:{c[3]} Full Name: {c[0].title()} {c[1].title()} \nUpdated acoount balance is ${c[4]:,}")
+   if not found:
+      print(f"This account ID {user_acc} Not Found")
+      return
+   
+#This fuction helps to withdraw from an account
+def Withdraw():
+   try:
+      user_acc = int(input("Enter the AccountID from which you want to withdraw: "))
+      amount = int(input("Enter the amount $: "))
+   except ValueError:
+      print("Enter digits only")
+      return
+   found = False
+   for c in customers:
+      if user_acc == c[3]:
+         found = True
+         if amount < c[4]:
+            c[4] -= amount
+            print(f"${amount:,} was withdrawn from the accountID: {c[3]} FullName: {c[0].title()} {c[1].title()} \nUpdated balance is {c[4]:,}")
+         else:
+            print(f"The balance account is insufficient to withdraw")
+   if not found:
+      print(f"This AccountID: {user_acc} Was Not Found!")
+      return
 
-  #Option 2: To deposit into an account
-  elif choice == '2':
-    acc_id = int(input("Type the account ID you want to deposit into: "))
-    amount = int(input("Type the amount $: "))
+#This function displays a specific customer’s account ID based on their customer ID
+def SerachCustomerAccounts():
+   try:
+      user_id = int(input("Please Enter the customer ID to show its accounts: "))
+   except ValueError:
+      print("Enter Digits Only")
+      return
+   found = False
+   total_acc = 0
+   for c in customers:
+      if user_id == c[2]:
+         found = True
+         total_acc += 1
+         print(f"CustomerID: {c[2]} - Full Name: {c[0].title()} {c[1].title()} - AccountID: {c[3]}")
+   if not found:
+      print(f"CustomerID {user_id} Was Not Found!")
+      return
+   print(f"\nThe customer has {total_acc} accounts")
+
+#This function displays the average balance of customers’ accounts based on their customer ID
+def AverageBalance():
+    try:
+        user_id = int(input("Enter the customer ID: "))
+    except ValueError:
+        print("Enter Digits Only")
+        return 
+    found = False
+    total_balance = 0
+    counter = 0
     for c in customers:
-      if c[0] == acc_id:
-        c[2] = c[2] + amount
-        print(f"\nUpdated account {acc_name.title()} balance is ${c[2]:,}")
-        break
-    else:
-      print(f"\nThe account was not found")
+        if user_id == c[2]:
+            found = True
+            total_balance += c[4]
+            counter += 1
+            print(f"AccountID: {c[3]} Full Name: {c[0].title()} {c[1].title()} - Balance = ${c[4]:,}")
+    if not found:
+        print(f"The CustomerID {user_id} Was Not Found!")
+        return
+    ave = total_balance / counter
+    print(f"\nThe Average Balance = ${ave:,}")
 
-  #Option 3: To withdraw from an account    
-  elif choice == '3':
-    acc_id = int(input("Type the account ID you want to withdraw from: "))
-    amount = int(input("Type the amount $: "))
-    for c in customers:
-      if c[0] == acc_id:
-        if c[2] <= amount:
-          print(f"The account balance is insufficient to withdraw")
-          break
-        c[2] = c[2] - amount
-        print(f"\nUpdated account {acc_name.title()} balance is ${c[2]:,}")
-        break
-    else:
-      print(f"\nThe account was not found")
+#This function displays the accounts ID that are above the average based on their customer ID
+def DisplayAccountAboveAve():
+   try:
+      user_id = int(input("Enter the customer ID here: "))
+   except ValueError:
+      print("Enter Digits Oly")
+      return
+   found = False
+   total_balance = 0
+   counter = 0
+   for c in customers:
+      if user_id == c[2]:
+         found = True
+         total_balance += c[4]
+         counter += 1
+   if not found:
+      print(f"The CustomerID: {user_id} Was Not Found!")
+      return
+   ave = total_balance / counter
+   for c in customers:
+      if user_id == c[2] and c[4] > ave:
+         found = True
+         print(f"The Balance Of AccountID: {c[3]} Is Above The Average, which is ${c[4]:,}")   
 
-  #Option 4: Exit the program
-  elif choice == '4':
-    print("Exit the program")
-    exit()
+#This function displays the menu by which the user can choose one of its options to operate it  
+def menu():
+   while True:
+      print("\n========== Banking Operation System ==========")
+      print("\n1.Add New Accounts")
+      print("2.Display All Accounts")
+      print("3.Deposit Into Accounts")
+      print("4.Withdraw From Accounts")
+      print(f"5.Display The Customer's Accounts Using Their CustomerID")
+      print(f"6.Display The Average Balance Of A Customer's Accounts")
+      print("7.Display The Customer's Accounts With Balance Above The Average")
+      print("8.Exit The Program")
 
-  #Invalid input
-  else:
-    print("Choose one of the five options please")
+      try:
+         choice = int(input(f"\nChoose one of the options above: "))
+      except ValueError:
+         print("Enter digits only")
+         continue
 
+      if choice == 1: 
+         AddAccount()
+      elif choice == 2:
+         Display()
+      elif choice == 3:
+         Deposit()
+      elif choice == 4:
+         Withdraw()
+      elif choice == 5:
+         SerachCustomerAccounts()
+      elif choice == 6:
+         AverageBalance()
+      elif choice == 7:
+         DisplayAccountAboveAve()
+      elif choice == 8:
+         print("Exiting The Program")
+         exit()
+      else:
+         print("Plase Choose One Of The 5 Options Above")
+         
+menu()
