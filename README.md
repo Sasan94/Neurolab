@@ -6,6 +6,7 @@ This repository documents my personal learning journey in Python programming, al
 
 ## Projects & Exercises
 Here, I share simple and foundational Python exercises, including:
+- Using functions
 - Loops and conditionals.
 - Counting and basic math problems.
 - Sorting algorithms.
