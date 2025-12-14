@@ -1,13 +1,7 @@
-#Declear a global array named customers to store and use the customers's information throughout the code
+#Declear a global variable to store and use the customers's information throughout the code
 customers = []
-
-#This function displays customers's information
-def Display():
-   for c in customers:
-      print(f"Info ==> CustomerID: {c[2]} - AccountID: {c[3]} - FullName: {c[0].title()} {c[1].title()} - Balance = ${c[4]:,}")
-
 #This function adds new customer to the system
-def AddAccount():
+def addAccount():
    first_name = input("Type the holder's account name: ")
    last_name = input(f"Type the last name for {first_name.title()}: ")
    try:
@@ -27,9 +21,12 @@ def AddAccount():
       return
    info = [first_name, last_name, cust_id, acc_id, balance]
    customers.append(info)
-
+#This function displays customers's information
+def display():
+   for c in customers:
+      print(f"Info ==> CustomerID: {c[2]} - AccountID: {c[3]} - FullName: {c[0].title()} {c[1].title()} - Balance = ${c[4]:,}")
 #This function helps to deposit into another account
-def Deposit():
+def deposit():
    try:
       user_acc = int(input("Enter the AccountID into which you want to deposit: "))
       amount = int(input("Enter the amount $: "))
@@ -44,10 +41,9 @@ def Deposit():
          print(f"\nAn amount Of ${amount:,} was deposited into the account with ID:{c[3]} Full Name: {c[0].title()} {c[1].title()} \nUpdated acoount balance is ${c[4]:,}")
    if not found:
       print(f"This account ID {user_acc} Not Found")
-      return
-   
-#This fuction helps to withdraw from an account
-def Withdraw():
+      return  
+#This fuction helps to withdraw from accounts
+def withdraw():
    try:
       user_acc = int(input("Enter the AccountID from which you want to withdraw: "))
       amount = int(input("Enter the amount $: "))
@@ -66,9 +62,8 @@ def Withdraw():
    if not found:
       print(f"This AccountID: {user_acc} Was Not Found!")
       return
-
 #This function displays a specific customer’s account ID based on their customer ID
-def SerachCustomerAccounts():
+def serachCustomerAccounts():
    try:
       user_id = int(input("Please Enter the customer ID to show its accounts: "))
    except ValueError:
@@ -85,9 +80,8 @@ def SerachCustomerAccounts():
       print(f"CustomerID {user_id} Was Not Found!")
       return
    print(f"\nThe customer has {total_acc} accounts")
-
 #This function displays the average balance of customers’ accounts based on their customer ID
-def AverageBalance():
+def averageBalance():
     try:
         user_id = int(input("Enter the customer ID: "))
     except ValueError:
@@ -107,9 +101,8 @@ def AverageBalance():
         return
     ave = total_balance / counter
     print(f"\nThe Average Balance = ${ave:,}")
-
 #This function displays the accounts ID that are above the average based on their customer ID
-def DisplayAccountAboveAve():
+def displayAccountAboveAve():
    try:
       user_id = int(input("Enter the customer ID here: "))
    except ValueError:
@@ -131,7 +124,22 @@ def DisplayAccountAboveAve():
       if user_id == c[2] and c[4] > ave:
          found = True
          print(f"The Balance Of AccountID: {c[3]} Is Above The Average, which is ${c[4]:,}")   
-
+#Display how many accounts we have in the system
+def totalAccountsID():
+   total_account = 0
+   for c in customers:
+      c[3] = 1
+      total_account += c[3]
+   print(f"Total AccountID = {total_account}")
+#Display how many customers we have in the system
+def totalCustomers():
+   total_customer = 0
+   seen = []
+   for c in customers:
+      if c[2] not in seen:
+         seen.append(c[2])
+         total_customer += 1
+   print(f"Total Number Of Customers = {total_customer:,}")
 #This function displays the menu by which the user can choose one of its options to operate it  
 def menu():
    while True:
@@ -143,32 +151,36 @@ def menu():
       print(f"5.Display The Customer's Accounts Using Their CustomerID")
       print(f"6.Display The Average Balance Of A Customer's Accounts")
       print("7.Display The Customer's Accounts With Balance Above The Average")
-      print("8.Exit The Program")
-
+      print("8.Diplay Total Number Of AccountID")
+      print("9.Display Total Number Of Customers")
+      print("10.Exit The Program")
       try:
          choice = int(input(f"\nChoose one of the options above: "))
       except ValueError:
          print("Enter digits only")
          continue
-
       if choice == 1: 
-         AddAccount()
+         addAccount()
       elif choice == 2:
-         Display()
+         display()
       elif choice == 3:
-         Deposit()
+         deposit()
       elif choice == 4:
-         Withdraw()
+         withdraw()
       elif choice == 5:
-         SerachCustomerAccounts()
+         serachCustomerAccounts()
       elif choice == 6:
-         AverageBalance()
+         averageBalance()
       elif choice == 7:
-         DisplayAccountAboveAve()
+         displayAccountAboveAve()
       elif choice == 8:
+         totalAccountsID()
+      elif choice == 9:
+         totalCustomers()
+      elif choice == 10:
          print("Exiting The Program")
          exit()
       else:
-         print("Plase Choose One Of The 5 Options Above")
-         
+         print("Plase Choose One Of The 5 Options Above")        
 menu()
+input("Press Enter To Exit In DOS Environment")
