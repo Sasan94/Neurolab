@@ -13,12 +13,6 @@
 ## ⚙️ Requirements
 Python 3.x
 
-## 📊 Example Use Cases
-- Manage parking spaces efficiently
-- Track parking availability
-- Monitor revenue from booked spots
-- Practice Python fundamentals
-
 ## 🧠 Concepts Used
 - Functions
 - Loops
