@@ -1,10 +1,11 @@
-#Decaler the array named products to store info and use them to further operations
+#Decaler the global array named products to store info and use them to further operations throughout the code
 products = []
+
 #Using a while loop to show the menu untile the user chooses one of the options
 def menu():
    while True:
       print("\n********* Shopping Store System *********")
-      print("\n1.Select Products")
+      print("\n1.Enter Products")
       print("2.Display All Products")
       print("3.Total Store Revenue")
       print("4.Report Sales By Category")
@@ -93,11 +94,14 @@ def totalRevenue():
       return
 #Display pricy products
 def exorbitant():
-   found = False
+   if not products:
+      print("No Products")
+      return
+   pricy = products[0]
    for p in products:
-      if p[3] > 1000:
-         found = True
-         print(f"{p[1].title()} is pricy, which is ${p[3]:,}")
+      if p[3] > pricy[3]:
+         pricy = p
+   print(f"Pricy product is {pricy[1].title()} which is ${pricy[3]:,}")
 #Display the best-selling product
 def bestSelling():
     if not products:
