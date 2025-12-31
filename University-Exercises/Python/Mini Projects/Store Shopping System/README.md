@@ -6,8 +6,8 @@
 - Display All Products
 - Total Store Revenue
 - Report Sales By Category
-- Exorbitant Products
-- Best-Selling Products
+- Exorbitant And Cheap Products
+- Best-Selling And Least-Selling Products
 - Exit The Program
   
 ## ⚙️ Requirements
